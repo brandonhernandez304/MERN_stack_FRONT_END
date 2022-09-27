@@ -2,8 +2,8 @@ import React from 'react'
 
 const Show = (props) => {
   const id = props.match.params.id
-  const people = props.person
-  const person= props.find(p => p._id === id)
+  const people = props.people
+  const person= people.find(p => p._id === id)
   return (
     <div className="person">
       <h1>{person.name}</h1>

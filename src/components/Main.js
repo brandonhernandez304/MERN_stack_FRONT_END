@@ -7,9 +7,9 @@ function Main(props) {
 
     const [people, setPeople] = useState(null)
 
-    //const URL = "http://localhost:4000/people/";
+    const URL = "http://localhost:4000/people/";
 
-    const URL = "https://mern-stack-bhern34.herokuapp.com/people/"
+    //const URL = "https://mern-stack-bhern34.herokuapp.com/people/"
 
 
     const getPeople = async () => {
@@ -48,6 +48,7 @@ function Main(props) {
         method:"DELETE",
 
       })
+      getPeople()
     }
 
     useEffect(()=> {
@@ -64,7 +65,7 @@ function Main(props) {
         </Route>
         <Route
           path="/people/:id"
-          render={(rp) => (
+          render={rp => (
             <Show
             people={people}
             updatePeople={updatePeople}
