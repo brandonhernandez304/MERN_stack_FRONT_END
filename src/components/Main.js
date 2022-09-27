@@ -26,7 +26,7 @@ function Main(props) {
             },
             body: JSON.stringify(person),
         })
-        // updateList of people
+        // update list of people
         getPeople()
     }
 
@@ -43,16 +43,15 @@ function Main(props) {
       getPeople()
     }
     // does not need (id) since it's the only parameter
-    const deletePeople = async id =>{
+    const deletePeople = async (id) =>{
       await fetch(URL + id, {
         method:"DELETE",
 
       })
-      getPeople()
+      getPeople();
     }
 
-    useEffect(()=> {
-    }, [])
+    useEffect(() => {getPeople()},[]);
 
   return (
     <main>
