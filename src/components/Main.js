@@ -7,7 +7,7 @@ function Main(props) {
 
     const [people, setPeople] = useState(null)
 
-    //const URL = "http://localhost:4000/people";
+    //const URL = "http://localhost:4000/people/";
 
     const URL = "https://mern-stack-bhern34.herokuapp.com/people/"
 
@@ -30,8 +30,27 @@ function Main(props) {
         getPeople()
     }
 
+    //update people route
+    const updatePeople = async (person,id)=>{
+      //make a put request to make some people
+      await fetch(URL + id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "Application/json",
+        },
+        body: JSON.stringify(person)
+      })
+      getPeople()
+    }
+    // does not need (id) since it's the only parameter
+    const deletePeople = async id =>{
+      await fetch(URL + id, {
+        method:"DELETE",
+
+      })
+    }
+
     useEffect(()=> {
-        getPeople()
     }, [])
 
   return (
@@ -47,6 +66,9 @@ function Main(props) {
           path="/people/:id"
           render={(rp) => (
             <Show
+            people={people}
+            updatePeople={updatePeople}
+            deletePeople={deletePeople}
               {...rp}
             />
           )}
