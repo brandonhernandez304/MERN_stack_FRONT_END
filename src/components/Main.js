@@ -13,18 +13,18 @@ function Main(props) {
 
 
     const getPeople = async () => {
-        const response = await fetch(URL)
+        const response = await fetch(URL);
         const data = await response.json();
-        setPeople(data)
+        setPeople(data);
     }
 
     const createPeople = async (person) => {
         await fetch(URL, {
             method: "POST",
             headers: {
-                "Content-Type": "Application/json"
+                "Content-Type": "Application/json",
             },
-            body: JSON.stringify(person)
+            body: JSON.stringify(person),
         })
         // updateList of people
         getPeople()
@@ -38,7 +38,7 @@ function Main(props) {
         headers: {
           "Content-Type": "Application/json",
         },
-        body: JSON.stringify(person)
+        body: JSON.stringify(person),
       })
       getPeople()
     }
